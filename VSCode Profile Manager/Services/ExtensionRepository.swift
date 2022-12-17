@@ -66,7 +66,7 @@ struct ExtensionRepository {
     private func getExtensions(
         filter: ExtensionModel.Filter,
         flags: [ExtensionModel.Filters.FlagType] = []
-    ) async throws -> [ExtensionModel.Card] {
+    ) async throws -> ([ExtensionModel.Card], UInt) {
         let filters = ExtensionModel.Filters(
             flags: [.IncludeLatestVersionOnly, .IncludeStatistics, .IncludeFiles] + flags,
             filters: [filter]
@@ -81,6 +81,7 @@ struct ExtensionRepository {
 
         let decoder = JSONDecoder()
         let result = try decoder.decode(ExtensionModel.Results.self, from: data)
+        var total: UInt = 0
         var extensions: [ExtensionModel.Card] = []
 
         for result in result.results {
@@ -135,25 +136,34 @@ struct ExtensionRepository {
 
                 extensions.append(extCard)
             }
+
+            if let metTotal = result.resultMetadata
+                .first(where: { $0.metadataType == .ResultCount })?.metadataItems
+                .first(where: { $0.name == .TotalCount })?.count
+            {
+                total += metTotal
+            }
         }
 
-        return extensions
+        return (extensions, total)
     }
 
-    func getFeatured() async throws -> [ExtensionModel.Card] {
+    func getFeatured() async throws -> ([ExtensionModel.Card], UInt) {
         return try await getExtensions(filter: .init(pageSize: 4,
                                                      criteria: [.init(filterType: .Featured)]))
     }
 
-    func getPopular() async throws -> [ExtensionModel.Card] {
+    func getPopular() async throws -> ([ExtensionModel.Card], UInt) {
         return try await getExtensions(filter: .init(pageSize: 4,
                                                      criteria: [
                                                          .init(filterType: .ExcludeWithFlags),
                                                      ]))
     }
 
-    func searchExtensions(_ search: String) async throws -> [ExtensionModel.Card] {
-        return try await getExtensions(filter: .init(pageSize: 10,
+    func searchExtensions(_ search: String,
+                          _ page: UInt?) async throws -> ([ExtensionModel.Card], UInt)
+    {
+        return try await getExtensions(filter: .init(pageNumber: page ?? 1, pageSize: 20,
                                                      criteria: [
                                                          .init(
                                                              filterType: .SearchText,

@@ -11,42 +11,76 @@ struct SearchView: View {
                 SwiftUI.Section(header: SearchBar()) {
                     VStack(alignment: .leading, spacing: 20) {
                         if !loading && gs.extensionsSearchResult.isEmpty {
-                            ESection("Featured", gs.extensionsFeatured)
-                            ESection("Popular", gs.extensionsPopular)
+                            ESection("Featured", gs.extensionsFeatured) {}
+                            ESection("Popular", gs.extensionsPopular) {}
                         } else {
-                            ESection(nil, gs.extensionsSearchResult)
+                            ESection(nil, gs.extensionsSearchResult) {
+                                handleSearch(true)
+                            }
                         }
                     }
                 }
             }
         }
-        .task {
-            do {
-                if gs.extensionsFeatured.isEmpty {
-                    gs.extensionsFeatured = try await services.extension.getFeatured()
+        .onAppear {
+            if gs.extensionsFeatured.isEmpty {
+                Task {
+                    do {
+                        let (extensions, _) = try await services.extension.getFeatured()
+                        gs.extensionsFeatured = extensions
+                    } catch {
+                        print(error)
+                    }
                 }
+            }
 
-                if gs.extensionsPopular.isEmpty {
-                    gs.extensionsPopular = try await services.extension.getPopular()
+            if gs.extensionsPopular.isEmpty {
+                Task {
+                    do {
+                        let (extensions, _) = try await services.extension.getPopular()
+                        gs.extensionsPopular = extensions
+                    } catch {
+                        print(error)
+                    }
                 }
-            } catch {
-                print(error)
             }
         }
     }
 
-    private func handleSearch() {
-        Task {
+    private func handleSearch(_ more: Bool = false) {
+        if loading ||
+            (more && gs.extensionsSearchResult.count == gs.extensionsSearchResultTotal)
+        {
+            return
+        }
+
+        if !more {
             gs.extensionsSearchResult = []
-            loading = true
+            gs.extensionsSearchResultTotal = 0
+        }
+        loading = true
+
+        var page: UInt?
+
+        if gs.extensionsSearchResult.count % 20 == 0 {
+            page = UInt((gs.extensionsSearchResult.count / 20) + 1)
+        }
+
+        Task {
             do {
-                if !gs.extensionsSearch.isEmpty {
-                    gs.extensionsSearchResult = try await services.extension
-                        .searchExtensions(gs.extensionsSearch)
-                }
+                let (extensions, total) = try await services.extension
+                    .searchExtensions(
+                        gs.extensionsSearch,
+                        page
+                    )
+
+                gs.extensionsSearchResult += extensions
+                gs.extensionsSearchResultTotal = total
+
             } catch {
                 print(error)
             }
+
             loading = false
         }
     }
@@ -55,8 +89,8 @@ struct SearchView: View {
         HStack {
             TextField("Search", text: $gs.extensionsSearch)
                 .textFieldStyle(PlainTextFieldStyle())
-                .onSubmit(handleSearch)
-            Button(action: handleSearch) {
+                .onSubmit { handleSearch() }
+            Button { handleSearch() } label: {
                 if loading {
                     ProgressView()
                         .progressViewStyle(LinearProgressViewStyle())
@@ -77,7 +111,11 @@ struct SearchView: View {
         .shadow(radius: 5)
     }
 
-    @ViewBuilder func ESection(_ title: String?, _ extensions: [ExtensionModel.Card]) -> some View {
+    @ViewBuilder func ESection(
+        _ title: String?,
+        _ extensions: [ExtensionModel.Card],
+        loadMore: @escaping () -> Void
+    ) -> some View {
         VStack(alignment: .leading) {
             if let title {
                 Text(title)
@@ -89,6 +127,11 @@ struct SearchView: View {
                 if !extensions.isEmpty {
                     ForEach(extensions, id: \.self) { ext in
                         ExtensionCard(ext: ext)
+                            .onAppear {
+                                if ext == extensions.last {
+                                    loadMore()
+                                }
+                            }
                     }
                 } else {
                     ForEach(0 ... 3, id: \.self) { _ in

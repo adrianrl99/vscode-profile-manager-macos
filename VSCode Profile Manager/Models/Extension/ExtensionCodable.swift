@@ -25,7 +25,7 @@ extension ExtensionModel {
         extensionId = try container.decode(UUID.self, forKey: CodingKeys.extensionId)
         extensionName = try container.decode(String.self, forKey: CodingKeys.extensionName)
         displayName = try container.decode(String.self, forKey: CodingKeys.displayName)
-        shortDescription = try container.decode(String.self, forKey: CodingKeys.shortDescription)
+        shortDescription = try? container.decode(String.self, forKey: CodingKeys.shortDescription)
         publisher = try container.decode(Publisher.self, forKey: CodingKeys.publisher)
         statistics = try? container.decode([Statistics].self, forKey: CodingKeys.statistics)
         versions = try container.decode([Version].self, forKey: CodingKeys.versions)

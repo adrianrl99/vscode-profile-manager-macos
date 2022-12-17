@@ -64,9 +64,10 @@ struct ExtensionCard: View {
                         }
                     }
 
-                    Text(ext.shortDescription)
+                    Text(ext.shortDescription ?? " ")
                         .lineLimit(1)
-                        .help(ext.shortDescription)
+                        .help(ext.shortDescription ?? " ")
+                    
 
                     HStack(spacing: 4) {
                         if ext.verified {

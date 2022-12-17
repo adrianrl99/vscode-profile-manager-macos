@@ -6,7 +6,7 @@ struct ExtensionModel: Decodable {
     let extensionId: UUID
     let extensionName: String
     let displayName: String
-    let shortDescription: String
+    let shortDescription: String?
     let publisher: Publisher
     let statistics: [Statistics]?
     let versions: [Version]
@@ -27,7 +27,7 @@ struct ExtensionModel: Decodable {
     struct Card: Hashable {
         let displayName: String
         let releaseDate: DateInRegion
-        let shortDescription: String
+        let shortDescription: String?
         let verified: Bool
         let publisherName: String
 
