@@ -11,6 +11,24 @@
 		FA90F402294CBC10005CC567 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F401294CBC10005CC567 /* ContentView.swift */; };
 		FA90F404294CBC12005CC567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA90F403294CBC12005CC567 /* Assets.xcassets */; };
 		FA90F407294CBC12005CC567 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA90F406294CBC12005CC567 /* Preview Assets.xcassets */; };
+		FA90F410294CBC70005CC567 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F40F294CBC70005CC567 /* SwiftDate */; };
+		FA90F413294CBC8A005CC567 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F412294CBC8A005CC567 /* AnyCodable */; };
+		FA90F416294CBD6E005CC567 /* BlurWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F415294CBD6E005CC567 /* BlurWindow.swift */; };
+		FA90F41B294CC213005CC567 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41A294CC213005CC567 /* SideBar.swift */; };
+		FA90F41D294CC3ED005CC567 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41C294CC3ED005CC567 /* TabButton.swift */; };
+		FA90F41F294CC934005CC567 /* ProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41E294CC934005CC567 /* ProfilesView.swift */; };
+		FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F420294CFA75005CC567 /* ExtensionsView.swift */; };
+		FA90F423294CFA92005CC567 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F422294CFA92005CC567 /* SettingsView.swift */; };
+		FA90F425294CFAA5005CC567 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F424294CFAA5005CC567 /* SearchView.swift */; };
+		FA90F427294CFC56005CC567 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F426294CFC56005CC567 /* Card.swift */; };
+		FA90F429294CFC73005CC567 /* ExtensionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F428294CFC73005CC567 /* ExtensionCard.swift */; };
+		FA90F42E294CFDC4005CC567 /* ExtensionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */; };
+		FA90F430294CFE4B005CC567 /* ExtensionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */; };
+		FA90F435294D026B005CC567 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F434294D026B005CC567 /* FileKit */; };
+		FA90F438294D046D005CC567 /* ExtensionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F437294D046D005CC567 /* ExtensionRepository.swift */; };
+		FA90F43E294D26CE005CC567 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F43D294D26CE005CC567 /* Services.swift */; };
+		FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F440294D361C005CC567 /* DoubleExtensions.swift */; };
+		FA90F443294D3637005CC567 /* UIntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F442294D3637005CC567 /* UIntExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +38,21 @@
 		FA90F403294CBC12005CC567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA90F406294CBC12005CC567 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA90F408294CBC12005CC567 /* VSCode_Profile_Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VSCode_Profile_Manager.entitlements; sourceTree = "<group>"; };
+		FA90F415294CBD6E005CC567 /* BlurWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurWindow.swift; sourceTree = "<group>"; };
+		FA90F41A294CC213005CC567 /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		FA90F41C294CC3ED005CC567 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		FA90F41E294CC934005CC567 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
+		FA90F420294CFA75005CC567 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
+		FA90F422294CFA92005CC567 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA90F424294CFAA5005CC567 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FA90F426294CFC56005CC567 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FA90F428294CFC73005CC567 /* ExtensionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCard.swift; sourceTree = "<group>"; };
+		FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModel.swift; sourceTree = "<group>"; };
+		FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCodable.swift; sourceTree = "<group>"; };
+		FA90F437294D046D005CC567 /* ExtensionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRepository.swift; sourceTree = "<group>"; };
+		FA90F43D294D26CE005CC567 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		FA90F440294D361C005CC567 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		FA90F442294D3637005CC567 /* UIntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA90F435294D026B005CC567 /* FileKit in Frameworks */,
+				FA90F413294CBC8A005CC567 /* AnyCodable in Frameworks */,
+				FA90F410294CBC70005CC567 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +88,11 @@
 		FA90F3FE294CBC10005CC567 /* VSCode Profile Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FA90F43F294D3603005CC567 /* Extensions */,
+				FA90F414294CBD55005CC567 /* Components */,
+				FA90F419294CC1E5005CC567 /* Models */,
+				FA90F418294CC1E0005CC567 /* Services */,
+				FA90F417294CC1D9005CC567 /* Views */,
 				FA90F3FF294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift */,
 				FA90F401294CBC10005CC567 /* ContentView.swift */,
 				FA90F403294CBC12005CC567 /* Assets.xcassets */,
@@ -67,6 +108,64 @@
 				FA90F406294CBC12005CC567 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA90F414294CBD55005CC567 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F415294CBD6E005CC567 /* BlurWindow.swift */,
+				FA90F41A294CC213005CC567 /* SideBar.swift */,
+				FA90F41C294CC3ED005CC567 /* TabButton.swift */,
+				FA90F426294CFC56005CC567 /* Card.swift */,
+				FA90F428294CFC73005CC567 /* ExtensionCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FA90F417294CC1D9005CC567 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F41E294CC934005CC567 /* ProfilesView.swift */,
+				FA90F420294CFA75005CC567 /* ExtensionsView.swift */,
+				FA90F422294CFA92005CC567 /* SettingsView.swift */,
+				FA90F424294CFAA5005CC567 /* SearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA90F418294CC1E0005CC567 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F437294D046D005CC567 /* ExtensionRepository.swift */,
+				FA90F43D294D26CE005CC567 /* Services.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FA90F419294CC1E5005CC567 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F42C294CFDB7005CC567 /* Extension */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA90F42C294CFDB7005CC567 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */,
+				FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FA90F43F294D3603005CC567 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA90F440294D361C005CC567 /* DoubleExtensions.swift */,
+				FA90F442294D3637005CC567 /* UIntExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +184,11 @@
 			dependencies = (
 			);
 			name = "VSCode Profile Manager";
+			packageProductDependencies = (
+				FA90F40F294CBC70005CC567 /* SwiftDate */,
+				FA90F412294CBC8A005CC567 /* AnyCodable */,
+				FA90F434294D026B005CC567 /* FileKit */,
+			);
 			productName = "VSCode Profile Manager";
 			productReference = FA90F3FC294CBC10005CC567 /* VSCode Profile Manager.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +217,11 @@
 				Base,
 			);
 			mainGroup = FA90F3F3294CBC10005CC567;
+			packageReferences = (
+				FA90F40E294CBC70005CC567 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				FA90F411294CBC8A005CC567 /* XCRemoteSwiftPackageReference "AnyCodable" */,
+				FA90F433294D026B005CC567 /* XCRemoteSwiftPackageReference "FileKit" */,
+			);
 			productRefGroup = FA90F3FD294CBC10005CC567 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,7 +249,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA90F402294CBC10005CC567 /* ContentView.swift in Sources */,
+				FA90F42E294CFDC4005CC567 /* ExtensionModel.swift in Sources */,
+				FA90F43E294D26CE005CC567 /* Services.swift in Sources */,
+				FA90F429294CFC73005CC567 /* ExtensionCard.swift in Sources */,
+				FA90F425294CFAA5005CC567 /* SearchView.swift in Sources */,
+				FA90F423294CFA92005CC567 /* SettingsView.swift in Sources */,
+				FA90F41B294CC213005CC567 /* SideBar.swift in Sources */,
+				FA90F430294CFE4B005CC567 /* ExtensionCodable.swift in Sources */,
+				FA90F416294CBD6E005CC567 /* BlurWindow.swift in Sources */,
+				FA90F41D294CC3ED005CC567 /* TabButton.swift in Sources */,
+				FA90F443294D3637005CC567 /* UIntExtensions.swift in Sources */,
+				FA90F41F294CC934005CC567 /* ProfilesView.swift in Sources */,
+				FA90F427294CFC56005CC567 /* Card.swift in Sources */,
+				FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */,
+				FA90F438294D046D005CC567 /* ExtensionRepository.swift in Sources */,
 				FA90F400294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift in Sources */,
+				FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +460,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA90F40E294CBC70005CC567 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		FA90F411294CBC8A005CC567 /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flight-School/AnyCodable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
+		FA90F433294D026B005CC567 /* XCRemoteSwiftPackageReference "FileKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nvzqz/FileKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA90F40F294CBC70005CC567 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA90F40E294CBC70005CC567 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+		FA90F412294CBC8A005CC567 /* AnyCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA90F411294CBC8A005CC567 /* XCRemoteSwiftPackageReference "AnyCodable" */;
+			productName = AnyCodable;
+		};
+		FA90F434294D026B005CC567 /* FileKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA90F433294D026B005CC567 /* XCRemoteSwiftPackageReference "FileKit" */;
+			productName = FileKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA90F3F4294CBC10005CC567 /* Project object */;
 }
