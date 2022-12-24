@@ -11,17 +11,28 @@ struct SearchView: View {
                 SwiftUI.Section(header: SearchBar()) {
                     VStack(alignment: .leading, spacing: 20) {
                         if !loading && gs.extensionsSearchResult.isEmpty {
-                            ESection("Featured", gs.extensionsFeatured) {}
-                            ESection("Popular", gs.extensionsPopular) {}
+                            ExtensionsList(
+                                title: "Featured",
+                                extensions: $gs.extensionsFeatured,
+                                loadMore: {}
+                            )
+                            ExtensionsList(
+                                title: "Popular",
+                                extensions: $gs.extensionsPopular,
+                                loadMore: {}
+                            )
                         } else {
-                            ESection(nil, gs.extensionsSearchResult) {
-                                handleSearch(true)
-                            }
+                            ExtensionsList(
+                                title: nil,
+                                extensions: $gs.extensionsSearchResult,
+                                loadMore: { handleSearch(true) }
+                            )
                         }
                     }
                 }
             }
         }
+        .padding(.top)
         .onAppear {
             if gs.extensionsFeatured.isEmpty {
                 Task {
@@ -48,6 +59,13 @@ struct SearchView: View {
     }
 
     private func handleSearch(_ more: Bool = false) {
+        if gs.extensionsSearch.isEmpty {
+            gs.extensionsSearchResult = []
+            gs.extensionsSearchResultTotal = 0
+
+            return
+        }
+
         if loading ||
             (more && gs.extensionsSearchResult.count == gs.extensionsSearchResultTotal)
         {
@@ -57,6 +75,10 @@ struct SearchView: View {
         if !more {
             gs.extensionsSearchResult = []
             gs.extensionsSearchResultTotal = 0
+
+            if gs.extensionsSearch.isEmpty {
+                return
+            }
         }
         loading = true
 
@@ -109,44 +131,6 @@ struct SearchView: View {
         .background(.thinMaterial)
         .cornerRadius(10)
         .shadow(radius: 5)
-    }
-
-    @ViewBuilder func ESection(
-        _ title: String?,
-        _ extensions: [ExtensionModel.Card],
-        loadMore: @escaping () -> Void
-    ) -> some View {
-        VStack(alignment: .leading) {
-            if let title {
-                Text(title)
-                    .font(.title)
-                    .bold()
-            }
-
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 320))]) {
-                if !extensions.isEmpty {
-                    ForEach(extensions, id: \.self) { ext in
-                        ExtensionCard(ext: ext)
-                            .onAppear {
-                                if ext == extensions.last {
-                                    loadMore()
-                                }
-                            }
-                    }
-                } else {
-                    ForEach(0 ... 3, id: \.self) { _ in
-                        Card {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                            .padding()
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 

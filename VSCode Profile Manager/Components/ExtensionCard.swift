@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct ExtensionCard: View {
-    let ext: ExtensionModel.Card
+    @EnvironmentObject var services: Services
+    @Binding var ext: ExtensionModel.Card
 
     var body: some View {
         Card {
@@ -53,11 +54,6 @@ struct ExtensionCard: View {
 
                         Spacer()
 
-                        if let size = ext.packageSize {
-                            Text(size)
-                                .foregroundColor(.gray)
-                        }
-
                         if let version = ext.version {
                             Text("v\(version)")
                                 .foregroundColor(.gray)
@@ -67,7 +63,6 @@ struct ExtensionCard: View {
                     Text(ext.shortDescription ?? " ")
                         .lineLimit(1)
                         .help(ext.shortDescription ?? " ")
-                    
 
                     HStack(spacing: 4) {
                         if ext.verified {
@@ -79,7 +74,9 @@ struct ExtensionCard: View {
 
                         Spacer()
 
-                        Button("Install", action: {})
+                        HStack {
+                            Button("Install", action: {})
+                        }
                     }
                 }
             }

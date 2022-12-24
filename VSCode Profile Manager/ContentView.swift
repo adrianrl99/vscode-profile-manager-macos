@@ -1,19 +1,10 @@
 import SwiftUI
 
-enum TabType: Equatable {
-    case profile
-    case extensions
-    case search
-    case settings
-}
-
-final class GlobalState: ObservableObject {
-    @Published var selectedTab: TabType = .profile
-    @Published var extensionsFeatured: [ExtensionModel.Card] = []
-    @Published var extensionsPopular: [ExtensionModel.Card] = []
-    @Published var extensionsSearchResult: [ExtensionModel.Card] = []
-    @Published var extensionsSearchResultTotal: UInt = 0
-    @Published var extensionsSearch: String = ""
+extension ContentView {
+    enum TabType: String, CaseIterable {
+        case profile
+        case extensions
+    }
 }
 
 struct ContentView: View {
@@ -21,30 +12,37 @@ struct ContentView: View {
     @StateObject var services = Services()
 
     var body: some View {
-        HStack(spacing: 0) {
-            SideBar()
-
-            Divider()
-
-            HStack {
-                VStack(alignment: .leading) {
-                    switch gs.selectedTab {
-                    case .profile: ProfilesView()
-                    case .extensions: ExtensionsView()
-                    case .search: SearchView()
-                    case .settings: SettingsView()
+        NavigationStack {
+            Layout("VSCode Profile Manager") {
+                VStack(spacing: 10) {
+                    HStack(spacing: 2) {
+                        ForEach(TabType.allCases, id: \.self) { tab in
+                            TabButton(
+                                title: tab.rawValue.capitalized,
+                                tab: tab,
+                                selected: $gs.selectedTab
+                            )
+                        }
                     }
 
-                    Spacer()
+                    HStack {
+                        switch gs.selectedTab {
+                        case .profile: ProfilesView()
+                        case .extensions: ExtensionsView()
+                        }
+                    }
                 }
-                Spacer()
+                .padding(.horizontal, 10)
+            } actions: {
+                NavigationLink(destination: AddProfileView()) {
+                    Image(systemName: "plus")
+                }
+
+                NavigationLink(destination: SettingsView()) {
+                    Image(systemName: "gear")
+                }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-            .padding()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea(.all, edges: .all)
         .environmentObject(gs)
         .environmentObject(services)
     }

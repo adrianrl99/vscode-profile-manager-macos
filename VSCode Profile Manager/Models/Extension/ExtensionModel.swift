@@ -24,17 +24,20 @@ struct ExtensionModel: Decodable {
     var averagerating: String? = nil
     var packageSize: String? = nil
 
-    struct Card: Hashable {
+    struct Card: Hashable, Decodable {
+        let extensionId: UUID
+        let extensionName: String
         let displayName: String
         let releaseDate: DateInRegion
         let shortDescription: String?
         let verified: Bool
         let publisherName: String
 
+        var vsixFile: File? = nil
+        var imageFile: File? = nil
         var image: NSImage? = nil
         var installs: String? = nil
         var averagerating: String? = nil
-        var packageSize: String? = nil
         var version: String? = nil
     }
 
@@ -75,7 +78,7 @@ struct ExtensionModel: Decodable {
         let flags: [FlagType]
     }
 
-    struct File: Decodable {
+    struct File: Hashable, Decodable {
         let assetType: AssetType
         let source: URL
     }
@@ -280,12 +283,22 @@ struct ExtensionModel: Decodable {
 
     struct Results: Decodable {
         var results: [Result]
+
+        struct Card: Decodable {
+            var results: [Result.Card]
+        }
     }
 
     struct Result: Decodable {
         var extensions: [ExtensionModel]
         let pagingToken: AnyDecodable?
         let resultMetadata: [Metadata]
+
+        struct Card: Decodable {
+            var extensions: [ExtensionModel.Card]
+            let pagingToken: AnyDecodable?
+            let resultMetadata: [Metadata]
+        }
 
         enum MetadataType: String, Decodable {
             case ResultCount

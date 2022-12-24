@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3333BF29536DF100822646 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3333BE29536DF100822646 /* Layout.swift */; };
+		FA4D4F8929565E9400D8021B /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4F8829565E9400D8021B /* GlobalState.swift */; };
+		FA5DB1BD29509E0700F85E06 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */; };
+		FA5DB1BF29522BF800F85E06 /* ProfilesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */; };
 		FA90F400294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F3FF294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift */; };
 		FA90F402294CBC10005CC567 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F401294CBC10005CC567 /* ContentView.swift */; };
 		FA90F404294CBC12005CC567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA90F403294CBC12005CC567 /* Assets.xcassets */; };
@@ -14,7 +18,6 @@
 		FA90F410294CBC70005CC567 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F40F294CBC70005CC567 /* SwiftDate */; };
 		FA90F413294CBC8A005CC567 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F412294CBC8A005CC567 /* AnyCodable */; };
 		FA90F416294CBD6E005CC567 /* BlurWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F415294CBD6E005CC567 /* BlurWindow.swift */; };
-		FA90F41B294CC213005CC567 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41A294CC213005CC567 /* SideBar.swift */; };
 		FA90F41D294CC3ED005CC567 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41C294CC3ED005CC567 /* TabButton.swift */; };
 		FA90F41F294CC934005CC567 /* ProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41E294CC934005CC567 /* ProfilesView.swift */; };
 		FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F420294CFA75005CC567 /* ExtensionsView.swift */; };
@@ -29,9 +32,19 @@
 		FA90F43E294D26CE005CC567 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F43D294D26CE005CC567 /* Services.swift */; };
 		FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F440294D361C005CC567 /* DoubleExtensions.swift */; };
 		FA90F443294D3637005CC567 /* UIntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F442294D3637005CC567 /* UIntExtensions.swift */; };
+		FA91C84E294F3D9F001092B9 /* ExtensionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */; };
+		FAF2638B294FC84700242D14 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2638A294FC84700242D14 /* ProfileModel.swift */; };
+		FAF2638E294FCB8800242D14 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = FAF2638D294FCB8800242D14 /* SQLite */; };
+		FAF26390294FCE2B00242D14 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */; };
+		FAF2639229508A1D00242D14 /* CacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2639129508A1D00242D14 /* CacheRepository.swift */; };
+		FAF263942950949300242D14 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF263932950949300242D14 /* ProfileCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA3333BE29536DF100822646 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		FA4D4F8829565E9400D8021B /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
+		FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
+		FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesRepository.swift; sourceTree = "<group>"; };
 		FA90F3FC294CBC10005CC567 /* VSCode Profile Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSCode Profile Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA90F3FF294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSCode_Profile_ManagerApp.swift; sourceTree = "<group>"; };
 		FA90F401294CBC10005CC567 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,7 +52,6 @@
 		FA90F406294CBC12005CC567 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA90F408294CBC12005CC567 /* VSCode_Profile_Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VSCode_Profile_Manager.entitlements; sourceTree = "<group>"; };
 		FA90F415294CBD6E005CC567 /* BlurWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurWindow.swift; sourceTree = "<group>"; };
-		FA90F41A294CC213005CC567 /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		FA90F41C294CC3ED005CC567 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		FA90F41E294CC934005CC567 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
 		FA90F420294CFA75005CC567 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
@@ -53,6 +65,12 @@
 		FA90F43D294D26CE005CC567 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		FA90F440294D361C005CC567 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		FA90F442294D3637005CC567 /* UIntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtensions.swift; sourceTree = "<group>"; };
+		FA91C84C294F3A87001092B9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsList.swift; sourceTree = "<group>"; };
+		FAF2638A294FC84700242D14 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
+		FAF2639129508A1D00242D14 /* CacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheRepository.swift; sourceTree = "<group>"; };
+		FAF263932950949300242D14 /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF2638E294FCB8800242D14 /* SQLite in Frameworks */,
 				FA90F435294D026B005CC567 /* FileKit in Frameworks */,
 				FA90F413294CBC8A005CC567 /* AnyCodable in Frameworks */,
 				FA90F410294CBC70005CC567 /* SwiftDate in Frameworks */,
@@ -72,6 +91,7 @@
 		FA90F3F3294CBC10005CC567 = {
 			isa = PBXGroup;
 			children = (
+				FA91C84C294F3A87001092B9 /* README.md */,
 				FA90F3FE294CBC10005CC567 /* VSCode Profile Manager */,
 				FA90F3FD294CBC10005CC567 /* Products */,
 			);
@@ -114,10 +134,12 @@
 			isa = PBXGroup;
 			children = (
 				FA90F415294CBD6E005CC567 /* BlurWindow.swift */,
-				FA90F41A294CC213005CC567 /* SideBar.swift */,
 				FA90F41C294CC3ED005CC567 /* TabButton.swift */,
 				FA90F426294CFC56005CC567 /* Card.swift */,
 				FA90F428294CFC73005CC567 /* ExtensionCard.swift */,
+				FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */,
+				FAF263932950949300242D14 /* ProfileCard.swift */,
+				FA3333BE29536DF100822646 /* Layout.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -129,6 +151,7 @@
 				FA90F420294CFA75005CC567 /* ExtensionsView.swift */,
 				FA90F422294CFA92005CC567 /* SettingsView.swift */,
 				FA90F424294CFAA5005CC567 /* SearchView.swift */,
+				FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +161,10 @@
 			children = (
 				FA90F437294D046D005CC567 /* ExtensionRepository.swift */,
 				FA90F43D294D26CE005CC567 /* Services.swift */,
+				FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */,
+				FAF2639129508A1D00242D14 /* CacheRepository.swift */,
+				FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */,
+				FA4D4F8829565E9400D8021B /* GlobalState.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -145,6 +172,7 @@
 		FA90F419294CC1E5005CC567 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAF26389294FC83900242D14 /* Profile */,
 				FA90F42C294CFDB7005CC567 /* Extension */,
 			);
 			path = Models;
@@ -168,6 +196,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FAF26389294FC83900242D14 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FAF2638A294FC84700242D14 /* ProfileModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,6 +224,7 @@
 				FA90F40F294CBC70005CC567 /* SwiftDate */,
 				FA90F412294CBC8A005CC567 /* AnyCodable */,
 				FA90F434294D026B005CC567 /* FileKit */,
+				FAF2638D294FCB8800242D14 /* SQLite */,
 			);
 			productName = "VSCode Profile Manager";
 			productReference = FA90F3FC294CBC10005CC567 /* VSCode Profile Manager.app */;
@@ -221,6 +258,7 @@
 				FA90F40E294CBC70005CC567 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				FA90F411294CBC8A005CC567 /* XCRemoteSwiftPackageReference "AnyCodable" */,
 				FA90F433294D026B005CC567 /* XCRemoteSwiftPackageReference "FileKit" */,
+				FAF2638C294FCB8800242D14 /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = FA90F3FD294CBC10005CC567 /* Products */;
 			projectDirPath = "";
@@ -248,22 +286,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5DB1BF29522BF800F85E06 /* ProfilesRepository.swift in Sources */,
 				FA90F402294CBC10005CC567 /* ContentView.swift in Sources */,
 				FA90F42E294CFDC4005CC567 /* ExtensionModel.swift in Sources */,
 				FA90F43E294D26CE005CC567 /* Services.swift in Sources */,
 				FA90F429294CFC73005CC567 /* ExtensionCard.swift in Sources */,
+				FAF2638B294FC84700242D14 /* ProfileModel.swift in Sources */,
+				FA4D4F8929565E9400D8021B /* GlobalState.swift in Sources */,
 				FA90F425294CFAA5005CC567 /* SearchView.swift in Sources */,
 				FA90F423294CFA92005CC567 /* SettingsView.swift in Sources */,
-				FA90F41B294CC213005CC567 /* SideBar.swift in Sources */,
 				FA90F430294CFE4B005CC567 /* ExtensionCodable.swift in Sources */,
 				FA90F416294CBD6E005CC567 /* BlurWindow.swift in Sources */,
+				FA91C84E294F3D9F001092B9 /* ExtensionsList.swift in Sources */,
+				FA3333BF29536DF100822646 /* Layout.swift in Sources */,
 				FA90F41D294CC3ED005CC567 /* TabButton.swift in Sources */,
+				FAF26390294FCE2B00242D14 /* DatabaseRepository.swift in Sources */,
+				FA5DB1BD29509E0700F85E06 /* AddProfileView.swift in Sources */,
 				FA90F443294D3637005CC567 /* UIntExtensions.swift in Sources */,
 				FA90F41F294CC934005CC567 /* ProfilesView.swift in Sources */,
+				FAF2639229508A1D00242D14 /* CacheRepository.swift in Sources */,
 				FA90F427294CFC56005CC567 /* Card.swift in Sources */,
 				FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */,
 				FA90F438294D046D005CC567 /* ExtensionRepository.swift in Sources */,
 				FA90F400294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift in Sources */,
+				FAF263942950949300242D14 /* ProfileCard.swift in Sources */,
 				FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -375,6 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -486,6 +534,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		FAF2638C294FCB8800242D14 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -503,6 +559,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA90F433294D026B005CC567 /* XCRemoteSwiftPackageReference "FileKit" */;
 			productName = FileKit;
+		};
+		FAF2638D294FCB8800242D14 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAF2638C294FCB8800242D14 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

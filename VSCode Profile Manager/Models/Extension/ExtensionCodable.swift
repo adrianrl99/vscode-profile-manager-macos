@@ -45,6 +45,71 @@ extension ExtensionModel {
     }
 }
 
+extension ExtensionModel.Card {
+    enum CodingKeys: String, CodingKey {
+        case extensionId
+        case extensionName
+        case displayName
+        case shortDescription
+        case publisher
+        case statistics
+        case versions
+        case tags
+        case releaseDate
+        case publishedDate
+        case lastUpdated
+        case categories
+        case flags
+        case deploymentType
+        case installationTargets
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        extensionId = try container.decode(UUID.self, forKey: CodingKeys.extensionId)
+        extensionName = try container.decode(String.self, forKey: CodingKeys.extensionName)
+        displayName = try container.decode(String.self, forKey: CodingKeys.displayName)
+        releaseDate = try container.decode(String.self, forKey: CodingKeys.releaseDate).toISODate()!
+        shortDescription = try? container.decode(String.self, forKey: CodingKeys.shortDescription)
+        verified = try container.decode(String.self, forKey: CodingKeys.flags)
+            .split(separator: ", ")
+            .map { ExtensionModel.FlagType(rawValue: String($0)) ?? .unknown }
+            .contains(.verified)
+        publisherName = try container.decode(
+            ExtensionModel.Publisher.self,
+            forKey: CodingKeys.publisher
+        ).publisherName
+        if let version = try container.decode(
+            [ExtensionModel.Version].self,
+            forKey: CodingKeys.versions
+        ).first {
+            self.version = version.version
+
+            if let files = version.files {
+                vsixFile = files.first(where: { $0.assetType == .ServicesVSIXPackage })
+                imageFile = files
+                    .first(where: {
+                        $0.assetType == .ServicesIconSmall || $0.assetType == .ServicesIconDefault
+                    })
+            }
+        }
+
+        if let statistics = try? container
+            .decode([ExtensionModel.Statistics].self, forKey: CodingKeys.statistics)
+        {
+            if let installs = statistics.first(where: { $0.statisticName == .install })?.value {
+                self.installs = installs.quantityString()
+            }
+
+            if let averagerating = statistics.first(where: { $0.statisticName == .averagerating })?
+                .value
+            {
+                self.averagerating = averagerating.fixedString()
+            }
+        }
+    }
+}
+
 extension ExtensionModel.Publisher {
     enum CodingKeys: String, CodingKey {
         case displayName

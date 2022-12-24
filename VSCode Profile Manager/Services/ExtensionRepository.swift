@@ -46,10 +46,10 @@ struct ExtensionRepository {
         return data
     }
 
-    private func getFile(ext: ExtensionModel, file: ExtensionModel.File) async throws -> Data {
-        let base = (path + ext.extensionName + ext.versions.first!.version)
+    private func getFile(ext: ExtensionModel.Card, file: ExtensionModel.File) async throws -> Data {
+        let base = (path + ext.extensionName + (ext.version ?? "unknown"))
         let cached = File<Data>(path: base + file.assetType.rawValue)
-        if let data = try? cached.read() {
+        if cached.exists, let data = try? cached.read() {
             return data
         }
 
@@ -80,70 +80,30 @@ struct ExtensionRepository {
         let (data, _) = try await URLSession.shared.data(for: request)
 
         let decoder = JSONDecoder()
-        let result = try decoder.decode(ExtensionModel.Results.self, from: data)
+        var result = try decoder.decode(ExtensionModel.Results.Card.self, from: data)
         var total: UInt = 0
-        var extensions: [ExtensionModel.Card] = []
 
-        for result in result.results {
-            for ext in result.extensions {
-                var extCard = ExtensionModel.Card(
-                    displayName: ext.displayName,
-                    releaseDate: ext.releaseDate,
-                    shortDescription: ext.shortDescription,
-                    verified: ext.flags.contains(.verified),
-                    publisherName: ext.publisher.displayName
-                )
+        for r in 0 ..< result.results.count {
+            let res = result.results[r]
 
-                if let file = ext.versions.first?.files?
-                    .first(where: { $0.assetType == .ServicesIconSmall })
-                    ?? ext.versions.first?.files?
-                    .first(where: { $0.assetType == .ServicesIconDefault })
-                {
-                    let data = try await getFile(ext: ext, file: file)
-                    extCard.image = NSImage(data: data)
-                }
-
-                if let installs = ext.statistics?
-                    .first(where: { (s: ExtensionModel.Statistics) -> Bool in
-                        s.statisticName == .install
-                    })?.value
-                {
-                    extCard.installs = installs.quantityString()
-                }
-
-                if let averagerating = ext.statistics?
-                    .first(where: { $0.statisticName == .averagerating })?.value
-                {
-                    extCard.averagerating = averagerating.fixedString()
-                }
-
-                if let package = ext.versions.first?.files?
-                    .first(where: { $0.assetType == .ServicesVSIXPackage })?.source
-                {
-                    var request = URLRequest(url: package)
-                    request.httpMethod = "HEAD"
-
-                    let (_, urlResponse) = try await URLSession.shared.data(for: request)
-                    if let response = urlResponse as? HTTPURLResponse {
-                        if let length = response.allHeaderFields["Content-Length"] as? String,
-                           let size = UInt(length),
-                           size != 93
-                        {
-                            extCard.packageSize = size.humanizedByteString()
-                        }
-                    }
-                }
-
-                extensions.append(extCard)
-            }
-
-            if let metTotal = result.resultMetadata
+            if let metTotal = res.resultMetadata
                 .first(where: { $0.metadataType == .ResultCount })?.metadataItems
                 .first(where: { $0.name == .TotalCount })?.count
             {
                 total += metTotal
             }
+
+            for e in 0 ..< res.extensions.count {
+                let ext = res.extensions[e]
+
+                if let image = ext.imageFile {
+                    let data = try await getFile(ext: ext, file: image)
+                    result.results[r].extensions[e].image = NSImage(data: data)
+                }
+            }
         }
+
+        let extensions = result.results.flatMap { $0.extensions }
 
         return (extensions, total)
     }
@@ -170,5 +130,10 @@ struct ExtensionRepository {
                                                              value: search
                                                          ),
                                                      ]))
+    }
+
+    func installExtension(_ ext: ExtensionModel.Card) async throws {
+        _ = ext
+//        let data = try await getFile(ext: ext, file: <#T##ExtensionModel.File#>)
     }
 }

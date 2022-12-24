@@ -10,6 +10,8 @@ struct ExtensionsView: View {
     struct ExtensionsView_Previews: PreviewProvider {
         static var previews: some View {
             ExtensionsView()
+                .frame(width: 320, height: 600)
+                .padding(10)
         }
     }
 #endif
