@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FA3333BF29536DF100822646 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3333BE29536DF100822646 /* Layout.swift */; };
-		FA4D4F8929565E9400D8021B /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4F8829565E9400D8021B /* GlobalState.swift */; };
+		FA4D4F8B2957235700D8021B /* ExtensionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4F8A2957235700D8021B /* ExtensionCard.swift */; };
+		FA4D4F8D295723D500D8021B /* ExtensionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4F8C295723D500D8021B /* ExtensionModel.swift */; };
+		FA4D4F8F2957AD2600D8021B /* ApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4F8E2957AD2600D8021B /* ApiRepository.swift */; };
+		FA57A9D92958F9E9009FC09E /* ExtensionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57A9D82958F9E9009FC09E /* ExtensionsRepository.swift */; };
+		FA57A9DB295904D5009FC09E /* ExtensionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57A9DA295904D5009FC09E /* ExtensionsList.swift */; };
 		FA5DB1BD29509E0700F85E06 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */; };
 		FA5DB1BF29522BF800F85E06 /* ProfilesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */; };
 		FA90F400294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F3FF294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift */; };
