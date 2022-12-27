@@ -2,8 +2,8 @@ import FileKit
 import Foundation
 
 final class Services: ObservableObject {
-    let `extension`: ExtensionRepository
     let profiles: ProfilesRepository?
+    let extensions: ExtensionsRepository?
 
     @Published var profilesRecents: [ProfileModel] = []
     @Published var profilesByCategory: [ProfileModel.Category: [ProfileModel]] = [:]
@@ -14,16 +14,21 @@ final class Services: ObservableObject {
             try! base.createDirectory(withIntermediateDirectories: true)
         }
 
-        self.extension = ExtensionRepository()
-
         guard let db = try? DatabaseRepository(base: base),
               let cache = try? CacheRepository(base: base)
         else {
             profiles = nil
+            extensions = nil
             return
         }
+        let api = ApiRepository()
 
         profiles = ProfilesRepository(db: db.profiles, cache: cache.profiles)
+        extensions = ExtensionsRepository(
+            db: db.extensions,
+            cache: cache.extensions,
+            api: api.extensions
+        )
     }
 
     enum ProfilesSyncType {

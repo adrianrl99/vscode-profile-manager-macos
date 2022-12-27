@@ -3,9 +3,54 @@ import Foundation
 
 struct CacheRepository {
     let profiles: Profiles
+    let extensions: Extensions
 
     init(base: Path) throws {
         profiles = try Profiles(base: base)
+        extensions = try Extensions(base: base)
+    }
+
+    struct Extensions {
+        let path: Path
+
+        init(base: Path) throws {
+            path = base + "extensions"
+
+            if !path.exists {
+                try! base.createDirectory(withIntermediateDirectories: true)
+            }
+        }
+
+        func save(_ ext: ExtensionModel) throws {
+            let cache = path + ext.extensionName + (ext.version ?? "")
+            if !cache.exists {
+                try cache.createDirectory(withIntermediateDirectories: true)
+            }
+
+            let imageFile = File<Data>(path: cache + "image")
+            if let image = ext.image {
+                try image |> imageFile
+            }
+        }
+
+        func saveVsix(_ ext: ExtensionModel, _ data: Data) throws {
+            let cache = path + ext.extensionName + (ext.version ?? "")
+
+            let vsixFile = File<Data>(path: cache + "vsix")
+            try data |> vsixFile
+        }
+
+        func read(_ ext: ExtensionModel) throws -> ExtensionModel {
+            var ext = ext
+            let cache = path + ext.extensionName + (ext.version ?? "")
+
+            let imageFile = File<Data>(path: cache + "image")
+            if let image = try? imageFile.read() {
+                ext.image = image
+            }
+
+            return ext
+        }
     }
 
     struct Profiles {
@@ -13,7 +58,6 @@ struct CacheRepository {
 
         init(base: Path) throws {
             path = base + "profiles"
-            print("Profiles: \(path)")
 
             if !path.exists {
                 try! base.createDirectory(withIntermediateDirectories: true)

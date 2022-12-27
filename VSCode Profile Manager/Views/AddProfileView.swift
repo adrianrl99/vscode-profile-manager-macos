@@ -16,6 +16,12 @@ struct AddProfileView: View {
     @State var category: ProfileModel.Category = .other
     @State var tab: TabType = .installed
     @State var image: Data? = nil
+    @State var selected: [Int64] = []
+
+    @State var exts: [ExtensionModel] = []
+    @State var extsSearch: [ExtensionModel] = []
+    @State var totalSearch: UInt = 0
+
     var profile: ProfileModel? = nil
 
     var body: some View {
@@ -76,8 +82,19 @@ struct AddProfileView: View {
 
                 HStack {
                     switch tab {
-                    case .installed: ExtensionsView()
-                    case .search: ExtensionsView()
+                    case .installed: ExtensionsList($exts, $selected)
+                        .onAppear {
+                            Task {
+                                do {
+                                    if let extensions = services.extensions {
+                                        exts = try await extensions.installed()
+                                    }
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                    case .search: ExtensionsList($extsSearch, $selected, $totalSearch, search: handleSearch)
                     }
                 }
                 .padding(10)
@@ -93,7 +110,7 @@ struct AddProfileView: View {
                             try profiles.update(profile)
                             try services.syncProfiles([.recents, .byCategory])
                         } else {
-                            let profile = try profiles.create(
+                            try profiles.create(
                                 name: name,
                                 category: category,
                                 image: image
@@ -107,7 +124,7 @@ struct AddProfileView: View {
                     print(error)
                 }
             }
-            .disabled(name.isEmpty || image == nil)
+            .disabled(name.isEmpty)
         }
         .onAppear {
             if let profile = profile {
@@ -115,6 +132,14 @@ struct AddProfileView: View {
                 category = profile.category
                 image = profile.image
             }
+        }
+    }
+
+    func handleSearch(_ value: String, _ page: UInt) async throws {
+        if let extensions = services.extensions {
+            let (exts, total) = try await extensions.search(value, page)
+            extsSearch += exts
+            totalSearch = total
         }
     }
 }

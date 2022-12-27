@@ -6,9 +6,9 @@ struct ProfileModel: Identifiable, Hashable {
     var name: String
     var category: Category
     var image: Data? = nil
-    let extensions: [ExtensionModel.Card] = []
-    let extensionsCount: UInt = 0
     var used: Date?
+    let extensionsCount: UInt
+    var extensions: [ExtensionModel] = []
 
     enum Category: String, Hashable, CaseIterable {
         case language

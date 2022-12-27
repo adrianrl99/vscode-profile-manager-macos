@@ -8,7 +8,7 @@ extension ContentView {
 }
 
 struct ContentView: View {
-    @StateObject var gs = GlobalState()
+    @State var selectedTab: TabType = .profile
     @StateObject var services = Services()
 
     var body: some View {
@@ -20,15 +20,15 @@ struct ContentView: View {
                             TabButton(
                                 title: tab.rawValue.capitalized,
                                 tab: tab,
-                                selected: $gs.selectedTab
+                                selected: $selectedTab
                             )
                         }
                     }
 
                     HStack {
-                        switch gs.selectedTab {
+                        switch selectedTab {
                         case .profile: ProfilesView()
-                        case .extensions: ExtensionsView()
+                        case .extensions: ExtensionsList(.constant([]))
                         }
                     }
                 }
@@ -43,7 +43,6 @@ struct ContentView: View {
                 }
             }
         }
-        .environmentObject(gs)
         .environmentObject(services)
     }
 }

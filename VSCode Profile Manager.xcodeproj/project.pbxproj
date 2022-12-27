@@ -22,17 +22,11 @@
 		FA90F41F294CC934005CC567 /* ProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F41E294CC934005CC567 /* ProfilesView.swift */; };
 		FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F420294CFA75005CC567 /* ExtensionsView.swift */; };
 		FA90F423294CFA92005CC567 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F422294CFA92005CC567 /* SettingsView.swift */; };
-		FA90F425294CFAA5005CC567 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F424294CFAA5005CC567 /* SearchView.swift */; };
 		FA90F427294CFC56005CC567 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F426294CFC56005CC567 /* Card.swift */; };
-		FA90F429294CFC73005CC567 /* ExtensionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F428294CFC73005CC567 /* ExtensionCard.swift */; };
-		FA90F42E294CFDC4005CC567 /* ExtensionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */; };
-		FA90F430294CFE4B005CC567 /* ExtensionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */; };
 		FA90F435294D026B005CC567 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA90F434294D026B005CC567 /* FileKit */; };
-		FA90F438294D046D005CC567 /* ExtensionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F437294D046D005CC567 /* ExtensionRepository.swift */; };
 		FA90F43E294D26CE005CC567 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F43D294D26CE005CC567 /* Services.swift */; };
 		FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F440294D361C005CC567 /* DoubleExtensions.swift */; };
 		FA90F443294D3637005CC567 /* UIntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90F442294D3637005CC567 /* UIntExtensions.swift */; };
-		FA91C84E294F3D9F001092B9 /* ExtensionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */; };
 		FAF2638B294FC84700242D14 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2638A294FC84700242D14 /* ProfileModel.swift */; };
 		FAF2638E294FCB8800242D14 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = FAF2638D294FCB8800242D14 /* SQLite */; };
 		FAF26390294FCE2B00242D14 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */; };
@@ -42,7 +36,11 @@
 
 /* Begin PBXFileReference section */
 		FA3333BE29536DF100822646 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		FA4D4F8829565E9400D8021B /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
+		FA4D4F8A2957235700D8021B /* ExtensionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCard.swift; sourceTree = "<group>"; };
+		FA4D4F8C295723D500D8021B /* ExtensionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModel.swift; sourceTree = "<group>"; };
+		FA4D4F8E2957AD2600D8021B /* ApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRepository.swift; sourceTree = "<group>"; };
+		FA57A9D82958F9E9009FC09E /* ExtensionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsRepository.swift; sourceTree = "<group>"; };
+		FA57A9DA295904D5009FC09E /* ExtensionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsList.swift; sourceTree = "<group>"; };
 		FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
 		FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesRepository.swift; sourceTree = "<group>"; };
 		FA90F3FC294CBC10005CC567 /* VSCode Profile Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSCode Profile Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,17 +54,11 @@
 		FA90F41E294CC934005CC567 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
 		FA90F420294CFA75005CC567 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
 		FA90F422294CFA92005CC567 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		FA90F424294CFAA5005CC567 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FA90F426294CFC56005CC567 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		FA90F428294CFC73005CC567 /* ExtensionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCard.swift; sourceTree = "<group>"; };
-		FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModel.swift; sourceTree = "<group>"; };
-		FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCodable.swift; sourceTree = "<group>"; };
-		FA90F437294D046D005CC567 /* ExtensionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRepository.swift; sourceTree = "<group>"; };
 		FA90F43D294D26CE005CC567 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		FA90F440294D361C005CC567 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		FA90F442294D3637005CC567 /* UIntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtensions.swift; sourceTree = "<group>"; };
 		FA91C84C294F3A87001092B9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsList.swift; sourceTree = "<group>"; };
 		FAF2638A294FC84700242D14 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
 		FAF2639129508A1D00242D14 /* CacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheRepository.swift; sourceTree = "<group>"; };
@@ -136,10 +128,10 @@
 				FA90F415294CBD6E005CC567 /* BlurWindow.swift */,
 				FA90F41C294CC3ED005CC567 /* TabButton.swift */,
 				FA90F426294CFC56005CC567 /* Card.swift */,
-				FA90F428294CFC73005CC567 /* ExtensionCard.swift */,
-				FA91C84D294F3D9F001092B9 /* ExtensionsList.swift */,
 				FAF263932950949300242D14 /* ProfileCard.swift */,
 				FA3333BE29536DF100822646 /* Layout.swift */,
+				FA4D4F8A2957235700D8021B /* ExtensionCard.swift */,
+				FA57A9DA295904D5009FC09E /* ExtensionsList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -150,7 +142,6 @@
 				FA90F41E294CC934005CC567 /* ProfilesView.swift */,
 				FA90F420294CFA75005CC567 /* ExtensionsView.swift */,
 				FA90F422294CFA92005CC567 /* SettingsView.swift */,
-				FA90F424294CFAA5005CC567 /* SearchView.swift */,
 				FA5DB1BC29509E0700F85E06 /* AddProfileView.swift */,
 			);
 			path = Views;
@@ -159,12 +150,12 @@
 		FA90F418294CC1E0005CC567 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FA90F437294D046D005CC567 /* ExtensionRepository.swift */,
 				FA90F43D294D26CE005CC567 /* Services.swift */,
 				FAF2638F294FCE2B00242D14 /* DatabaseRepository.swift */,
 				FAF2639129508A1D00242D14 /* CacheRepository.swift */,
 				FA5DB1BE29522BF800F85E06 /* ProfilesRepository.swift */,
-				FA4D4F8829565E9400D8021B /* GlobalState.swift */,
+				FA4D4F8E2957AD2600D8021B /* ApiRepository.swift */,
+				FA57A9D82958F9E9009FC09E /* ExtensionsRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -172,19 +163,10 @@
 		FA90F419294CC1E5005CC567 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAF26389294FC83900242D14 /* Profile */,
-				FA90F42C294CFDB7005CC567 /* Extension */,
+				FAF2638A294FC84700242D14 /* ProfileModel.swift */,
+				FA4D4F8C295723D500D8021B /* ExtensionModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		FA90F42C294CFDB7005CC567 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				FA90F42D294CFDC4005CC567 /* ExtensionModel.swift */,
-				FA90F42F294CFE4B005CC567 /* ExtensionCodable.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		FA90F43F294D3603005CC567 /* Extensions */ = {
@@ -194,14 +176,6 @@
 				FA90F442294D3637005CC567 /* UIntExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		FAF26389294FC83900242D14 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				FAF2638A294FC84700242D14 /* ProfileModel.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,16 +262,15 @@
 			files = (
 				FA5DB1BF29522BF800F85E06 /* ProfilesRepository.swift in Sources */,
 				FA90F402294CBC10005CC567 /* ContentView.swift in Sources */,
-				FA90F42E294CFDC4005CC567 /* ExtensionModel.swift in Sources */,
+				FA4D4F8B2957235700D8021B /* ExtensionCard.swift in Sources */,
 				FA90F43E294D26CE005CC567 /* Services.swift in Sources */,
-				FA90F429294CFC73005CC567 /* ExtensionCard.swift in Sources */,
 				FAF2638B294FC84700242D14 /* ProfileModel.swift in Sources */,
-				FA4D4F8929565E9400D8021B /* GlobalState.swift in Sources */,
-				FA90F425294CFAA5005CC567 /* SearchView.swift in Sources */,
+				FA4D4F8D295723D500D8021B /* ExtensionModel.swift in Sources */,
+				FA57A9D92958F9E9009FC09E /* ExtensionsRepository.swift in Sources */,
 				FA90F423294CFA92005CC567 /* SettingsView.swift in Sources */,
-				FA90F430294CFE4B005CC567 /* ExtensionCodable.swift in Sources */,
+				FA4D4F8F2957AD2600D8021B /* ApiRepository.swift in Sources */,
 				FA90F416294CBD6E005CC567 /* BlurWindow.swift in Sources */,
-				FA91C84E294F3D9F001092B9 /* ExtensionsList.swift in Sources */,
+				FA57A9DB295904D5009FC09E /* ExtensionsList.swift in Sources */,
 				FA3333BF29536DF100822646 /* Layout.swift in Sources */,
 				FA90F41D294CC3ED005CC567 /* TabButton.swift in Sources */,
 				FAF26390294FCE2B00242D14 /* DatabaseRepository.swift in Sources */,
@@ -307,7 +280,6 @@
 				FAF2639229508A1D00242D14 /* CacheRepository.swift in Sources */,
 				FA90F427294CFC56005CC567 /* Card.swift in Sources */,
 				FA90F441294D361C005CC567 /* DoubleExtensions.swift in Sources */,
-				FA90F438294D046D005CC567 /* ExtensionRepository.swift in Sources */,
 				FA90F400294CBC10005CC567 /* VSCode_Profile_ManagerApp.swift in Sources */,
 				FAF263942950949300242D14 /* ProfileCard.swift in Sources */,
 				FA90F421294CFA75005CC567 /* ExtensionsView.swift in Sources */,
