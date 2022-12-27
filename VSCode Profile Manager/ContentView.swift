@@ -28,7 +28,7 @@ struct ContentView: View {
                     HStack {
                         switch selectedTab {
                         case .profile: ProfilesView()
-                        case .extensions: ExtensionsList(.constant([]))
+                        case .extensions: ExtensionsView()
                         }
                     }
                 }

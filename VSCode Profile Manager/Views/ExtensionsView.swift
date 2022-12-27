@@ -1,25 +1,27 @@
 import SwiftUI
 
 struct ExtensionsView: View {
-    @Binding var exts: [ExtensionModel]
+    @EnvironmentObject var services: Services
+    @State var exts: [ExtensionModel] = []
 
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 20) {
+            LazyVStack(spacing: 10) {
                 ForEach($exts, id: \.self) {
                     ExtensionCard(ext: $0)
                 }
             }
         }
-    }
-}
-
-#if DEBUG
-    struct ExtensionsView_Previews: PreviewProvider {
-        static var previews: some View {
-            ExtensionsView(exts: .constant([]))
-                .frame(width: 320, height: 600)
-                .padding(10)
+        .onAppear {
+            Task {
+                do {
+                    if let extensions = services.extensions {
+                        exts = try await extensions.installed()
+                    }
+                } catch {
+                    print(error)
+                }
+            }
         }
     }
-#endif
+}
