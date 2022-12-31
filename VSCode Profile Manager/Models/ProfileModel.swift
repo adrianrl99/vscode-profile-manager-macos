@@ -7,7 +7,7 @@ struct ProfileModel: Identifiable, Hashable {
     var category: Category
     var image: Data? = nil
     var used: Date?
-    let extensionsCount: UInt
+    var extensionsCount: UInt
     var extensions: [ExtensionModel] = []
 
     enum Category: String, Hashable, CaseIterable {

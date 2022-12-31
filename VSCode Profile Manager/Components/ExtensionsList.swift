@@ -10,6 +10,7 @@ struct ExtensionsList: View {
     @State var loading = false
     @State var search = ""
     @State var page: UInt = 1
+    @State var internalSearch = ""
 
     init(_ exts: Binding<[ExtensionModel]>) {
         _exts = exts
@@ -47,26 +48,19 @@ struct ExtensionsList: View {
         VStack {
             if withSearch {
                 SearchBar()
+            } else {
+                InternalSearchBar()
             }
 
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach($exts, id: \.self) { ext in
-                        if selectable {
-                            ExtensionCard(ext: ext, selected: $selected)
-                                .onAppear {
-                                    if ext.wrappedValue == exts.last {
-                                        handleSearch(true)
-                                    }
-                                }
-                        } else {
-                            ExtensionCard(ext: ext)
-                                .onAppear {
-                                    if ext.wrappedValue == exts.last {
-                                        handleSearch(true)
-                                    }
-                                }
-                        }
+                    if withSearch {
+                        List($exts)
+                    } else {
+                        List(Binding(get: { exts.filter { internalSearch.isEmpty ||
+                                $0.displayName.lowercased().contains(internalSearch.lowercased()) ||
+                                $0.extensionName.lowercased().contains(internalSearch.lowercased())
+                        } }, set: { _ in }))
                     }
 
                     if loading {
@@ -88,6 +82,40 @@ struct ExtensionsList: View {
             total = 0
             loading = false
         }
+    }
+
+    @ViewBuilder func List(_ ls: Binding<[ExtensionModel]>) -> some View {
+        ForEach(ls, id: \.self) { ext in
+            if selectable {
+                ExtensionCard(ext: ext, selected: $selected)
+                    .onAppear {
+                        if ext.wrappedValue == exts.last {
+                            handleSearch(true)
+                        }
+                    }
+            } else {
+                ExtensionCard(ext: ext)
+                    .onAppear {
+                        if ext.wrappedValue == exts.last {
+                            handleSearch(true)
+                        }
+                    }
+            }
+        }
+    }
+
+    @ViewBuilder func InternalSearchBar() -> some View {
+        HStack {
+            TextField("Search", text: $internalSearch)
+                .textFieldStyle(PlainTextFieldStyle())
+                .onChange(of: internalSearch, perform: { internalSearch = $0 })
+        }
+        .padding(.vertical, 10)
+        .padding(.horizontal)
+        .background(Color.primary.opacity(0.05))
+        .background(.thinMaterial)
+        .cornerRadius(10)
+        .shadow(radius: 5)
     }
 
     @ViewBuilder func SearchBar() -> some View {

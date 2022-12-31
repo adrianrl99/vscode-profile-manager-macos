@@ -94,7 +94,8 @@ struct AddProfileView: View {
                                 }
                             }
                         }
-                    case .search: ExtensionsList($extsSearch, $selected, $totalSearch, search: handleSearch)
+                    case .search: ExtensionsList($extsSearch, $selected, $totalSearch,
+                                                 search: handleSearch)
                     }
                 }
                 .padding(10)
@@ -107,13 +108,18 @@ struct AddProfileView: View {
                             profile.name = name
                             profile.category = category
                             profile.image = image
+                            let extensions = exts
+                                .filter { $0.id != nil && selected.contains($0.id!) }
+                            profile.extensions = extensions
+                            profile.extensionsCount = UInt(extensions.count)
                             try profiles.update(profile)
                             try services.syncProfiles([.recents, .byCategory])
                         } else {
                             try profiles.create(
                                 name: name,
                                 category: category,
-                                image: image
+                                image: image,
+                                exts: selected
                             )
                             try services.syncProfiles([.byCategory])
                         }
@@ -127,10 +133,17 @@ struct AddProfileView: View {
             .disabled(name.isEmpty)
         }
         .onAppear {
-            if let profile = profile {
+            if var profile = profile {
                 name = profile.name
                 category = profile.category
                 image = profile.image
+                if let profiles = services.profiles {
+                    do {
+                        selected = try profiles.readExtensionsIDs(profile)
+                    } catch {
+                        print(error)
+                    }
+                }
             }
         }
     }

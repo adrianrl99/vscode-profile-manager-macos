@@ -61,7 +61,6 @@ struct ExtensionsRepository {
         let uncachedIDs = ids
             .filter { id in !cachedExtensions.contains(where: { $0.extensionId == id }) }
 
-        print(filter)
         // Search uncached extensions and cache it
         let uncached = try (uncachedIDs.isEmpty
             ? []

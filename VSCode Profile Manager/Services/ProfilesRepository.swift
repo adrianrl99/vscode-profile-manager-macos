@@ -22,9 +22,10 @@ struct ProfilesRepository {
     @discardableResult
     func create(name: String,
                 category: ProfileModel.Category,
-                image: Data?) throws -> ProfileModel
+                image: Data?,
+                exts: [Int64]) throws -> ProfileModel
     {
-        var profile = try db.create(name: name, category: category)
+        var profile = try db.create(name: name, category: category, exts: exts)
         profile.image = image
         try cache.save(profile)
 
@@ -37,6 +38,10 @@ struct ProfilesRepository {
 
     func readByCategory() throws -> [ProfileModel.Category: [ProfileModel]] {
         try db.readByCategory().mapValues { try $0.map(cache.read) }
+    }
+
+    func readExtensionsIDs(_ profile: ProfileModel) throws -> [Int64] {
+        try db.readExtensionsIDs(profile)
     }
 
     func update(_ profile: ProfileModel) throws {
