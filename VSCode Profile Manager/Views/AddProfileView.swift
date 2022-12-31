@@ -108,11 +108,8 @@ struct AddProfileView: View {
                             profile.name = name
                             profile.category = category
                             profile.image = image
-                            let extensions = exts
-                                .filter { $0.id != nil && selected.contains($0.id!) }
-                            profile.extensions = extensions
-                            profile.extensionsCount = UInt(extensions.count)
-                            try profiles.update(profile)
+                            profile.extensionsCount = UInt(selected.count)
+                            try profiles.update(profile, selected)
                             try services.syncProfiles([.recents, .byCategory])
                         } else {
                             try profiles.create(

@@ -44,8 +44,8 @@ struct ProfilesRepository {
         try db.readExtensionsIDs(profile)
     }
 
-    func update(_ profile: ProfileModel) throws {
-        try db.update(profile)
+    func update(_ profile: ProfileModel, _ exts: [Int64]) throws {
+        try db.update(profile, exts)
         try cache.save(profile)
     }
 
@@ -55,9 +55,7 @@ struct ProfilesRepository {
     }
 
     func open(_ profile: ProfileModel) throws {
-        var profile = profile
-        profile.used = Date()
-        try update(profile)
+        try db.updateUsed(profile)
         let (data, exts) = cache.paths(profile)
         shell("--extensions-dir", exts.rawValue, "--user-data-dir", data.rawValue)
     }

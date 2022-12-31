@@ -8,7 +8,6 @@ struct ProfileModel: Identifiable, Hashable {
     var image: Data? = nil
     var used: Date?
     var extensionsCount: UInt
-    var extensions: [ExtensionModel] = []
 
     enum Category: String, Hashable, CaseIterable {
         case language
