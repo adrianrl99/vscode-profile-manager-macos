@@ -263,47 +263,87 @@ struct DatabaseRepository {
             ).map { $0[ProfilesExtensions.Fields.extension_id] }
         }
 
+        func readExtensionsByIDs(_ exts: [Int64]) throws -> [ExtensionModel] {
+            try ctx.db.prepare(ctx.et.where(exts.contains(Extensions.Fields.id)))
+                .map {
+                    ExtensionModel(
+                        id: $0[Extensions.Fields.id],
+                        extensionId: $0[Extensions.Fields.extensionId],
+                        extensionName: $0[Extensions.Fields.extensionName],
+                        displayName: $0[Extensions.Fields.displayName],
+                        lastUpdated: $0[Extensions.Fields.lastUpdated].inDefaultRegion(),
+                        shortDescription: $0[Extensions.Fields.shortDescription],
+                        verified: $0[Extensions.Fields.verified],
+                        publisherName: $0[Extensions.Fields.publisherName],
+                        installed: $0[Extensions.Fields.installed],
+                        version: $0[Extensions.Fields.version],
+                        imageURL: $0[Extensions.Fields.imageURL],
+                        vsixURL: $0[Extensions.Fields.vsixURL],
+                        installs: $0[Extensions.Fields.installs],
+                        averagerating: $0[Extensions.Fields.averagerating]
+                    )
+                }
+        }
+
+        func readExtensions(_ profile: ProfileModel) throws -> [ExtensionModel] {
+            try ctx.db.prepare(ctx.et.join(
+                ctx.pet,
+                on: ProfilesExtensions.Fields.extension_id == Extensions.Fields.id
+            ).where(ProfilesExtensions.Fields.profile_id == profile.id)).map {
+                ExtensionModel(
+                    id: $0[Extensions.Fields.id],
+                    extensionId: $0[Extensions.Fields.extensionId],
+                    extensionName: $0[Extensions.Fields.extensionName],
+                    displayName: $0[Extensions.Fields.displayName],
+                    lastUpdated: $0[Extensions.Fields.lastUpdated].inDefaultRegion(),
+                    shortDescription: $0[Extensions.Fields.shortDescription],
+                    verified: $0[Extensions.Fields.verified],
+                    publisherName: $0[Extensions.Fields.publisherName],
+                    installed: $0[Extensions.Fields.installed],
+                    version: $0[Extensions.Fields.version],
+                    imageURL: $0[Extensions.Fields.imageURL],
+                    vsixURL: $0[Extensions.Fields.vsixURL],
+                    installs: $0[Extensions.Fields.installs],
+                    averagerating: $0[Extensions.Fields.averagerating]
+                )
+            }
+        }
+
+        func readProfilesExtensions(_ profile: ProfileModel) throws -> [(Int64, Int64)] {
+            try ctx.db.prepare(
+                ctx.pet.where(ProfilesExtensions.Fields.profile_id == profile.id)
+            ).map { ($0[ProfilesExtensions.Fields.id], $0[ProfilesExtensions.Fields.extension_id]) }
+        }
+
         func updateUsed(_ profile: ProfileModel) throws {
             try ctx.db.run(ctx.pt.where(Fields.id == profile.id).update(
                 Fields.used <- Date()
             ))
         }
 
-        func update(_ profile: ProfileModel, _ exts: [Int64]) throws {
-            try ctx.db.run(ctx.pt.where(Fields.id == profile.id).update(
-                Fields.name <- profile.name,
-                Fields.category <- profile.category.rawValue,
-                Fields.used <- profile.used
-            ))
-
-            var deletes = try ctx.db.prepare(
-                ctx.pet.where(ProfilesExtensions.Fields.profile_id == profile.id)
-            ).map { ($0[ProfilesExtensions.Fields.id], $0[ProfilesExtensions.Fields.extension_id]) }
-
-            var inserts: [Int64] = []
-
-            for ext in exts {
-                if let idx = deletes.firstIndex(where: { $0.1 == ext }) {
-                    deletes.remove(at: idx)
-                } else {
-                    inserts.append(ext)
-                }
-            }
-
-            // Insert
-            if !inserts.isEmpty {
+        func insertExtensions(_ profile: ProfileModel, _ exts: [Int64]) throws {
+            if !exts.isEmpty {
                 try ctx.db.run(ctx.pet.insertMany(
-                    inserts.map { [
+                    exts.map { [
                         ProfilesExtensions.Fields.profile_id <- profile.id,
                         ProfilesExtensions.Fields.extension_id <- $0,
                     ] }
                 ))
             }
+        }
 
-            // Delete
-            for ext in deletes {
+        func deleteExtensions(_: ProfileModel, _ exts: [(Int64, Int64)]) throws {
+            for ext in exts {
                 try ctx.db.run(ctx.pet.where(ProfilesExtensions.Fields.id == ext.0).delete())
             }
+        }
+
+        func update(_ profile: ProfileModel, _: [Int64]) throws {
+            try ctx.db.run(ctx.pt.where(Fields.id == profile.id).update(
+                Fields.name <- profile.name,
+                Fields.category <- profile.category.rawValue,
+                Fields.used <- profile.used
+            ))
         }
 
         func delete(_ profile: ProfileModel) throws {

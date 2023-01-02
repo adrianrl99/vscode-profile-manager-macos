@@ -55,9 +55,11 @@ struct CacheRepository {
 
     struct Profiles {
         let path: Path
+        let extsPath: Path
 
         init(base: Path) throws {
             path = base + "profiles"
+            extsPath = base + "extensions"
 
             if !path.exists {
                 try! base.createDirectory(withIntermediateDirectories: true)
@@ -107,6 +109,10 @@ struct CacheRepository {
         func paths(_ profile: ProfileModel) -> (Path, Path) {
             let cache = path + profile.category.rawValue + profile.name
             return (cache + "data", cache + "path")
+        }
+
+        func vsixPath(_ ext: ExtensionModel) throws -> Path {
+            extsPath + ext.extensionName + (ext.version ?? "") + "vsix"
         }
     }
 }
